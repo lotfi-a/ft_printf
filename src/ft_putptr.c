@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex_base.c                                   :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laanikid <laanikid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/10 15:34:48 by laanikid          #+#    #+#             */
-/*   Updated: 2025/05/10 17:22:33 by laanikid         ###   ########.fr       */
+/*   Created: 2025/05/10 15:42:29 by laanikid          #+#    #+#             */
+/*   Updated: 2025/05/10 23:19:18 by laanikid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-void	ft_puthex_base(unsigned long n, char *base, int *c)
+void	ft_putptr(void *ptr, int *c)
 {
-	if (n >= 16)
-		ft_puthex_base(n / 16, base, c);
-	ft_putchar(base[n % 16], c);
+	if (!ptr)
+		ft_putstr("(nil)", c);
+	else
+	{
+		ft_putstr("0x", c);
+		ft_puthex_base((unsigned long)ptr, HEX_LOWER, c);
+	}
 }

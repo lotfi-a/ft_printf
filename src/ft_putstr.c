@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laanikid <laanikid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/10 14:55:39 by laanikid          #+#    #+#             */
-/*   Updated: 2025/05/10 17:16:36 by laanikid         ###   ########.fr       */
+/*   Created: 2025/05/10 14:57:07 by laanikid          #+#    #+#             */
+/*   Updated: 2025/05/10 23:19:25 by laanikid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
-#include <unistd.h>
+#include "../ft_printf.h"
 
-void	ft_putchar(char s, int *c)
+void	ft_putstr(const char *s, int *c)
 {
-	write(1, &s, 1);
-	(*c)++;
+	if (!s)
+	{
+		ft_putstr("(null)", c);
+		return ;
+	}
+	while (*s)
+		ft_putchar(*s++, c);
 }

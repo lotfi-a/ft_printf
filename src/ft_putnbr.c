@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laanikid <laanikid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/10 14:57:07 by laanikid          #+#    #+#             */
-/*   Updated: 2025/05/10 17:59:24 by laanikid         ###   ########.fr       */
+/*   Created: 2025/05/10 14:58:35 by laanikid          #+#    #+#             */
+/*   Updated: 2025/05/10 23:18:49 by laanikid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-void	ft_putstr(const char *s, int *c)
+void	ft_putnbr(int n, int *c)
 {
-	if (!s)
+	long	nb;
+
+	nb = n;
+	if (nb < 0)
 	{
-		ft_putstr("(null)", c);
-		return ;
+		ft_putchar('-', c);
+		nb = -nb;
 	}
-	while (*s)
-		ft_putchar(*s++, c);
+	if (nb >= 10)
+		ft_putnbr(nb / 10, c);
+	ft_putchar(nb % 10 + '0', c);
 }

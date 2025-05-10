@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putptr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_unsigned.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laanikid <laanikid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/10 15:42:29 by laanikid          #+#    #+#             */
-/*   Updated: 2025/05/10 17:21:55 by laanikid         ###   ########.fr       */
+/*   Created: 2025/05/10 17:34:37 by laanikid          #+#    #+#             */
+/*   Updated: 2025/05/10 23:19:13 by laanikid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-void	ft_putptr(void *ptr, int *c)
+void	ft_putnbr_unsigned(unsigned int n, int *c)
 {
-	if (!ptr)
-		ft_putstr("(nil)", c);
-	else
-	{
-		ft_putstr("0x", c);
-		ft_puthex_base((unsigned long)ptr, HEX_LOWER, c);
-	}
+	unsigned long	nb;
+
+	nb = n;
+	if (nb >= 10)
+		ft_putnbr_unsigned(nb / 10, c);
+	ft_putchar(nb % 10 + '0', c);
 }
